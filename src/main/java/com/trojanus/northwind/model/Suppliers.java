@@ -10,7 +10,7 @@ import java.util.Arrays;
  */
 
 @Entity
-@Table(name = "SUPPLIERS")
+@Table(name = "suppliers")
 public class Suppliers {
 
     @Id

@@ -1,9 +1,6 @@
 package com.trojanus.northwind.model;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by trojanus on 3/22/2017.
@@ -11,6 +8,8 @@ import javax.persistence.Id;
  * PurchaseOrderStatus model class
  */
 
+@Entity
+@Table(name = "purchase_order_status")
 public class PurchaseOrderStatus {
 
     @Id
