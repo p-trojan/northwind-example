@@ -2,6 +2,7 @@ package com.trojanus.northwind.model;
 
 import javax.persistence.*;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by trojanus on 3/22/2017.

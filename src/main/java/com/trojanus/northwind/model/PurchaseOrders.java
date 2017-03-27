@@ -31,8 +31,9 @@ public class PurchaseOrders {
     @Column(name = "creation_date")
     private Date creationDate;
 
-    @Column(name = "statud_id", length = 11)
-    private int statusId;
+    @ManyToOne
+    @JoinColumn(name = "status_id")
+    private PurchaseOrderStatus statusId;
 
     @Column(name = "expected_date")
     private Date expectedDate;
@@ -66,10 +67,10 @@ public class PurchaseOrders {
 
     public PurchaseOrders() {}
 
-    public PurchaseOrders(int id, Suppliers supplierId, int createdBy, Date submittedDate, Date creationDate, int statusId,
-                          Date expectedDate, BigDecimal shippingFee, BigDecimal taxes, Date paymentDate,
-                          BigDecimal paymentAmount, String paymentMethod, String notes, int approvedBy,
-                          Date approvedDate, int submittedBy) {
+    public PurchaseOrders(int id, Suppliers supplierId, int createdBy, Date submittedDate, Date creationDate,
+                          PurchaseOrderStatus statusId, Date expectedDate, BigDecimal shippingFee, BigDecimal taxes,
+                          Date paymentDate, BigDecimal paymentAmount, String paymentMethod, String notes,
+                          int approvedBy, Date approvedDate, int submittedBy) {
         this.id = id;
         this.supplierId = supplierId;
         this.createdBy = createdBy;
@@ -128,11 +129,11 @@ public class PurchaseOrders {
         this.creationDate = creationDate;
     }
 
-    public int getStatusId() {
+    public PurchaseOrderStatus getStatusId() {
         return statusId;
     }
 
-    public void setStatusId(int statusId) {
+    public void setStatusId(PurchaseOrderStatus statusId) {
         this.statusId = statusId;
     }
 

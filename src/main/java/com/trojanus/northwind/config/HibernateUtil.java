@@ -1,5 +1,6 @@
 package com.trojanus.northwind.config;
 
+import com.trojanus.northwind.model.PurchaseOrderStatus;
 import com.trojanus.northwind.model.PurchaseOrders;
 import com.trojanus.northwind.model.Suppliers;
 import org.hibernate.Session;
@@ -16,6 +17,7 @@ public class HibernateUtil {
         Configuration config = new Configuration();
         config.addAnnotatedClass(Suppliers.class);
         config.addAnnotatedClass(PurchaseOrders.class);
+        config.addAnnotatedClass(PurchaseOrderStatus.class);
         return config.buildSessionFactory();
     }
 
