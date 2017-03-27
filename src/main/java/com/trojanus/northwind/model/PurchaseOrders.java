@@ -18,8 +18,9 @@ public class PurchaseOrders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "supplier_id", length = 11)
-    private int supplierId;
+    @ManyToOne
+    @JoinColumn(name = "supplier_id")
+    private Suppliers supplierId;
 
     @Column(name = "created_by", length = 11)
     private int createdBy;
@@ -65,7 +66,7 @@ public class PurchaseOrders {
 
     public PurchaseOrders() {}
 
-    public PurchaseOrders(int id, int supplierId, int createdBy, Date submittedDate, Date creationDate, int statusId,
+    public PurchaseOrders(int id, Suppliers supplierId, int createdBy, Date submittedDate, Date creationDate, int statusId,
                           Date expectedDate, BigDecimal shippingFee, BigDecimal taxes, Date paymentDate,
                           BigDecimal paymentAmount, String paymentMethod, String notes, int approvedBy,
                           Date approvedDate, int submittedBy) {
@@ -95,11 +96,11 @@ public class PurchaseOrders {
         this.id = id;
     }
 
-    public int getSupplierId() {
+    public Suppliers getSupplierId() {
         return supplierId;
     }
 
-    public void setSupplierId(int supplierId) {
+    public void setSupplierId(Suppliers supplierId) {
         this.supplierId = supplierId;
     }
 

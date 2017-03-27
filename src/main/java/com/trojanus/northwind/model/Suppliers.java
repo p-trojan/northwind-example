@@ -94,6 +94,29 @@ public class Suppliers {
         this.attachments = attachments;
     }
 
+    public Suppliers(String company, String firstName, String lastName, String email, String jobTitle,
+                     String businessPhone, String homePhone, String mobilePhone, String faxNumber,
+                     String address, String city, String stateProvince, String zipPostalCode, String countryRegion,
+                     String webPage, String notes, byte[] attachments) {
+        this.company = company;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.jobTitle = jobTitle;
+        this.businessPhone = businessPhone;
+        this.homePhone = homePhone;
+        this.mobilePhone = mobilePhone;
+        this.faxNumber = faxNumber;
+        this.address = address;
+        this.city = city;
+        this.stateProvince = stateProvince;
+        this.zipPostalCode = zipPostalCode;
+        this.countryRegion = countryRegion;
+        this.webPage = webPage;
+        this.notes = notes;
+        this.attachments = attachments;
+    }
+
     public int getId() {
         return id;
     }
