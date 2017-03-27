@@ -23,7 +23,7 @@ Because I do it on my own and do not have any schedule I will apply some of tech
 I have not decided yet which technologies I will use, so the above list may change.
 
 ### Notes:
-Remember to create schema in MySQL *northwind-example*.
+Remember to create schema in MySQL `northwind-example` or change settings in `DatabaseConfig.java`
 
 ### Done:
 - [x] Hibernate added
@@ -31,6 +31,5 @@ Remember to create schema in MySQL *northwind-example*.
 - [x] finished @OneToMany and @ManyToOne mappings
 
 ### TODO:
-
 - [ ] add repository layer with Spring Data JPA
 - [ ] redo mappings to EmployeePrivileges, it should have two FKs. 
