@@ -16,11 +16,13 @@ public class PurchaseOrderDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "purchase_order_id")
-    private int purchaseOrderId;
+    @ManyToOne
+    @JoinColumn(name = "purchase_order_id")
+    private PurchaseOrders purchaseOrderId;
 
-    @Column(name = "product_id")
-    private int productId;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Products productId;
 
     @Column(name = "quantity", precision = 18, scale = 4)
     private BigDecimal quantity;
@@ -34,14 +36,26 @@ public class PurchaseOrderDetails {
     @Column(name = "posted_to_inventory")
     private int postedToInventory;
 
-    @Column(name = "inventory_id")
-    private int inventoryId;
+    @ManyToOne
+    @JoinColumn(name = "inventory_id")
+    private InventoryTransactions inventoryId;
 
     public PurchaseOrderDetails() {}
 
-    public PurchaseOrderDetails(int id, int purchaseOrderId, int productId, BigDecimal quantity, BigDecimal unitCost,
-                                Date dateReceived, int postedToInventory, int inventoryId) {
+    public PurchaseOrderDetails(int id, PurchaseOrders purchaseOrderId, Products productId, BigDecimal quantity, BigDecimal unitCost,
+                                Date dateReceived, int postedToInventory, InventoryTransactions inventoryId) {
         this.id = id;
+        this.purchaseOrderId = purchaseOrderId;
+        this.productId = productId;
+        this.quantity = quantity;
+        this.unitCost = unitCost;
+        this.dateReceived = dateReceived;
+        this.postedToInventory = postedToInventory;
+        this.inventoryId = inventoryId;
+    }
+
+    public PurchaseOrderDetails(PurchaseOrders purchaseOrderId, Products productId, BigDecimal quantity, BigDecimal unitCost,
+                                Date dateReceived, int postedToInventory, InventoryTransactions inventoryId) {
         this.purchaseOrderId = purchaseOrderId;
         this.productId = productId;
         this.quantity = quantity;
@@ -59,19 +73,19 @@ public class PurchaseOrderDetails {
         this.id = id;
     }
 
-    public int getPurchaseOrderId() {
+    public PurchaseOrders getPurchaseOrderId() {
         return purchaseOrderId;
     }
 
-    public void setPurchaseOrderId(int purchaseOrderId) {
+    public void setPurchaseOrderId(PurchaseOrders purchaseOrderId) {
         this.purchaseOrderId = purchaseOrderId;
     }
 
-    public int getProductId() {
+    public Products getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Products productId) {
         this.productId = productId;
     }
 
@@ -107,11 +121,11 @@ public class PurchaseOrderDetails {
         this.postedToInventory = postedToInventory;
     }
 
-    public int getInventoryId() {
+    public InventoryTransactions getInventoryId() {
         return inventoryId;
     }
 
-    public void setInventoryId(int inventoryId) {
+    public void setInventoryId(InventoryTransactions inventoryId) {
         this.inventoryId = inventoryId;
     }
 

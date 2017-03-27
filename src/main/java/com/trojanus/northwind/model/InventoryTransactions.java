@@ -14,8 +14,9 @@ public class InventoryTransactions {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "transaction_type")
-    private int transactionType;
+    @ManyToOne
+    @JoinColumn(name = "transaction_type")
+    private InventoryTransactionTypes transactionType;
 
     @Column(name = "transaction_create_date")
     private Date transactionCreatedDate;
@@ -23,27 +24,42 @@ public class InventoryTransactions {
     @Column(name = "transaction_modified_date")
     private Date transactionModifiedDate;
 
-    @Column(name = "product_id")
-    private int productId;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Products productId;
 
     @Column(name = "quantity")
     private int quantity;
 
-    @Column(name = "purchase_order_id")
-    private int purchaseOrderId;
+    @ManyToOne
+    @JoinColumn(name = "purchase_order_id")
+    private PurchaseOrders purchaseOrderId;
 
-    @Column(name = "customer_order_id")
-    private int customerOrderId;
+    @ManyToOne
+    @JoinColumn(name = "customer_order_id")
+    private Orders customerOrderId;
 
     @Column(name = "comments")
     private String comments;
 
     public InventoryTransactions() {}
 
-    public InventoryTransactions(int id, int transactionType, Date transactionCreatedDate, Date transactionModifiedDate,
-                                 int productId, int quantity, int purchaseOrderId, int customerOrderId,
+    public InventoryTransactions(int id, InventoryTransactionTypes transactionType, Date transactionCreatedDate, Date transactionModifiedDate,
+                                 Products productId, int quantity, PurchaseOrders purchaseOrderId, Orders customerOrderId,
                                  String comments) {
         this.id = id;
+        this.transactionType = transactionType;
+        this.transactionCreatedDate = transactionCreatedDate;
+        this.transactionModifiedDate = transactionModifiedDate;
+        this.productId = productId;
+        this.quantity = quantity;
+        this.purchaseOrderId = purchaseOrderId;
+        this.customerOrderId = customerOrderId;
+        this.comments = comments;
+    }
+
+    public InventoryTransactions(InventoryTransactionTypes transactionType, Date transactionCreatedDate, Date transactionModifiedDate,
+                                 Products productId, int quantity, PurchaseOrders purchaseOrderId, Orders customerOrderId, String comments) {
         this.transactionType = transactionType;
         this.transactionCreatedDate = transactionCreatedDate;
         this.transactionModifiedDate = transactionModifiedDate;
@@ -62,11 +78,11 @@ public class InventoryTransactions {
         this.id = id;
     }
 
-    public int getTransactionType() {
+    public InventoryTransactionTypes getTransactionType() {
         return transactionType;
     }
 
-    public void setTransactionType(int transactionType) {
+    public void setTransactionType(InventoryTransactionTypes transactionType) {
         this.transactionType = transactionType;
     }
 
@@ -86,11 +102,11 @@ public class InventoryTransactions {
         this.transactionModifiedDate = transactionModifiedDate;
     }
 
-    public int getProductId() {
+    public Products getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Products productId) {
         this.productId = productId;
     }
 
@@ -102,19 +118,19 @@ public class InventoryTransactions {
         this.quantity = quantity;
     }
 
-    public int getPurchaseOrderId() {
+    public PurchaseOrders getPurchaseOrderId() {
         return purchaseOrderId;
     }
 
-    public void setPurchaseOrderId(int purchaseOrderId) {
+    public void setPurchaseOrderId(PurchaseOrders purchaseOrderId) {
         this.purchaseOrderId = purchaseOrderId;
     }
 
-    public int getCustomerOrderId() {
+    public Orders getCustomerOrderId() {
         return customerOrderId;
     }
 
-    public void setCustomerOrderId(int customerOrderId) {
+    public void setCustomerOrderId(Orders customerOrderId) {
         this.customerOrderId = customerOrderId;
     }
 

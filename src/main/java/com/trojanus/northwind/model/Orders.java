@@ -16,11 +16,13 @@ public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "employee_id")
-    private int employeeId;
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employees employeeId;
 
-    @Column(name = "customer_id")
-    private int customerId;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customers customerId;
 
     @Column(name = "order_date")
     private Date orderDate;
@@ -28,8 +30,9 @@ public class Orders {
     @Column(name = "shipped_date")
     private Date shippedDate;
 
-    @Column(name = "shipper_id")
-    private int shipperId;
+    @ManyToOne
+    @JoinColumn(name = "shipper_id")
+    private Shippers shipperId;
 
     @Column(name = "ship_name", length = 50)
     private String shipName;
@@ -67,19 +70,46 @@ public class Orders {
     @Column(name = "tax_rate")
     private BigDecimal taxRate;
 
-    @Column(name = "tax_status_id")
-    private int taxStatusId;
+    @ManyToOne
+    @JoinColumn(name = "tax_status_id")
+    private OrderTaxStatus taxStatusId;
 
-    @Column(name = "status_id")
-    private int statusId;
+    @ManyToOne
+    @JoinColumn(name = "status_id")
+    private OrderStatus statusId;
 
     public Orders() {}
 
-    public Orders(int id, int employeeId, int customerId, Date orderDate, Date shippedDate, int shipperId,
+    public Orders(int id, Employees employeeId, Customers customerId, Date orderDate, Date shippedDate, Shippers shipperId,
                   String shipName, String shipAddress, String shipCity, String shipStateProvince,
                   String shipZipPostalCode, String shipCountryRegion, BigDecimal shippingFee, BigDecimal taxes,
-                  String paymentType, Date paidDate, String notes, BigDecimal taxRate, int taxStatusId, int statusId) {
+                  String paymentType, Date paidDate, String notes, BigDecimal taxRate, OrderTaxStatus taxStatusId, OrderStatus statusId) {
         this.id = id;
+        this.employeeId = employeeId;
+        this.customerId = customerId;
+        this.orderDate = orderDate;
+        this.shippedDate = shippedDate;
+        this.shipperId = shipperId;
+        this.shipName = shipName;
+        this.shipAddress = shipAddress;
+        this.shipCity = shipCity;
+        this.shipStateProvince = shipStateProvince;
+        this.shipZipPostalCode = shipZipPostalCode;
+        this.shipCountryRegion = shipCountryRegion;
+        this.shippingFee = shippingFee;
+        this.taxes = taxes;
+        this.paymentType = paymentType;
+        this.paidDate = paidDate;
+        this.notes = notes;
+        this.taxRate = taxRate;
+        this.taxStatusId = taxStatusId;
+        this.statusId = statusId;
+    }
+
+    public Orders(Employees employeeId, Customers customerId, Date orderDate, Date shippedDate, Shippers shipperId,
+                  String shipName, String shipAddress, String shipCity, String shipStateProvince, String shipZipPostalCode,
+                  String shipCountryRegion, BigDecimal shippingFee, BigDecimal taxes, String paymentType, Date paidDate,
+                  String notes, BigDecimal taxRate, OrderTaxStatus taxStatusId, OrderStatus statusId) {
         this.employeeId = employeeId;
         this.customerId = customerId;
         this.orderDate = orderDate;
@@ -109,19 +139,19 @@ public class Orders {
         this.id = id;
     }
 
-    public int getEmployeeId() {
+    public Employees getEmployeeId() {
         return employeeId;
     }
 
-    public void setEmployeeId(int employeeId) {
+    public void setEmployeeId(Employees employeeId) {
         this.employeeId = employeeId;
     }
 
-    public int getCustomerId() {
+    public Customers getCustomerId() {
         return customerId;
     }
 
-    public void setCustomerId(int customerId) {
+    public void setCustomerId(Customers customerId) {
         this.customerId = customerId;
     }
 
@@ -141,11 +171,11 @@ public class Orders {
         this.shippedDate = shippedDate;
     }
 
-    public int getShipperId() {
+    public Shippers getShipperId() {
         return shipperId;
     }
 
-    public void setShipperId(int shipperId) {
+    public void setShipperId(Shippers shipperId) {
         this.shipperId = shipperId;
     }
 
@@ -245,19 +275,19 @@ public class Orders {
         this.taxRate = taxRate;
     }
 
-    public int getTaxStatusId() {
+    public OrderTaxStatus getTaxStatusId() {
         return taxStatusId;
     }
 
-    public void setTaxStatusId(int taxStatusId) {
+    public void setTaxStatusId(OrderTaxStatus taxStatusId) {
         this.taxStatusId = taxStatusId;
     }
 
-    public int getStatusId() {
+    public OrderStatus getStatusId() {
         return statusId;
     }
 
-    public void setStatusId(int statusId) {
+    public void setStatusId(OrderStatus statusId) {
         this.statusId = statusId;
     }
 

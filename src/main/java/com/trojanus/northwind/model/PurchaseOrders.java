@@ -22,8 +22,9 @@ public class PurchaseOrders {
     @JoinColumn(name = "supplier_id")
     private Suppliers supplierId;
 
-    @Column(name = "created_by", length = 11)
-    private int createdBy;
+    @ManyToOne
+    @JoinColumn(name = "created_by")
+    private Employees createdBy;
 
     @Column(name = "submitted_date")
     private Date submittedDate;
@@ -67,7 +68,7 @@ public class PurchaseOrders {
 
     public PurchaseOrders() {}
 
-    public PurchaseOrders(int id, Suppliers supplierId, int createdBy, Date submittedDate, Date creationDate,
+    public PurchaseOrders(int id, Suppliers supplierId, Employees createdBy, Date submittedDate, Date creationDate,
                           PurchaseOrderStatus statusId, Date expectedDate, BigDecimal shippingFee, BigDecimal taxes,
                           Date paymentDate, BigDecimal paymentAmount, String paymentMethod, String notes,
                           int approvedBy, Date approvedDate, int submittedBy) {
@@ -105,11 +106,11 @@ public class PurchaseOrders {
         this.supplierId = supplierId;
     }
 
-    public int getCreatedBy() {
+    public Employees getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(int createdBy) {
+    public void setCreatedBy(Employees createdBy) {
         this.createdBy = createdBy;
     }
 

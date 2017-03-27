@@ -1,8 +1,6 @@
 package com.trojanus.northwind.config;
 
-import com.trojanus.northwind.model.PurchaseOrderStatus;
-import com.trojanus.northwind.model.PurchaseOrders;
-import com.trojanus.northwind.model.Suppliers;
+import com.trojanus.northwind.model.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -15,9 +13,24 @@ public class HibernateUtil {
 
     private static SessionFactory buildSessionFactory() {
         Configuration config = new Configuration();
-        config.addAnnotatedClass(Suppliers.class);
+        config.addAnnotatedClass(Customers.class);
+        config.addAnnotatedClass(EmployeePrivileges.class);
+        config.addAnnotatedClass(Employees.class);
+        config.addAnnotatedClass(InventoryTransactions.class);
+        config.addAnnotatedClass(InventoryTransactionTypes.class);
+        config.addAnnotatedClass(Invoices.class);
+        config.addAnnotatedClass(OrderDetails.class);
+        config.addAnnotatedClass(OrderDetailsStatus.class);
+        config.addAnnotatedClass(Orders.class);
+        config.addAnnotatedClass(OrderStatus.class);
+        config.addAnnotatedClass(OrderTaxStatus.class);
+        config.addAnnotatedClass(Privileges.class);
+        config.addAnnotatedClass(Products.class);
+        config.addAnnotatedClass(PurchaseOrderDetails.class);
         config.addAnnotatedClass(PurchaseOrders.class);
         config.addAnnotatedClass(PurchaseOrderStatus.class);
+        config.addAnnotatedClass(Shippers.class);
+        config.addAnnotatedClass(Suppliers.class);
         return config.buildSessionFactory();
     }
 

@@ -16,8 +16,9 @@ public class Invoices {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "order_id")
-    private int orderId;
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Orders orderId;
 
     @Column(name = "invoice_date")
     private Date invoiceDate;
@@ -36,8 +37,17 @@ public class Invoices {
 
     public Invoices() {}
 
-    public Invoices(int id, int orderId, Date invoiceDate, Date dueDate, BigDecimal tax, BigDecimal shipping, BigDecimal amountDue) {
+    public Invoices(int id, Orders orderId, Date invoiceDate, Date dueDate, BigDecimal tax, BigDecimal shipping, BigDecimal amountDue) {
         this.id = id;
+        this.orderId = orderId;
+        this.invoiceDate = invoiceDate;
+        this.dueDate = dueDate;
+        this.tax = tax;
+        this.shipping = shipping;
+        this.amountDue = amountDue;
+    }
+
+    public Invoices(Orders orderId, Date invoiceDate, Date dueDate, BigDecimal tax, BigDecimal shipping, BigDecimal amountDue) {
         this.orderId = orderId;
         this.invoiceDate = invoiceDate;
         this.dueDate = dueDate;
@@ -54,11 +64,11 @@ public class Invoices {
         this.id = id;
     }
 
-    public int getOrderId() {
+    public Orders getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(Orders orderId) {
         this.orderId = orderId;
     }
 

@@ -17,11 +17,13 @@ public class OrderDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "order_id")
-    private int orderId;
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Orders orderId;
 
-    @Column(name = "product_id")
-    private int productId;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Products productId;
 
     @Column(name = "quantity", precision = 18, scale = 4)
     private BigDecimal quantity;
@@ -32,8 +34,9 @@ public class OrderDetails {
     @Column(name = "discount")
     private BigDecimal discount;
 
-    @Column(name = "status_id")
-    private int statusId;
+    @ManyToOne
+    @JoinColumn(name = "status_id")
+    private OrderDetailsStatus statusId;
 
     @Column(name = "date_allocated")
     private Date dateAllocated;
@@ -46,9 +49,22 @@ public class OrderDetails {
 
     public OrderDetails() {}
 
-    public OrderDetails(int id, int orderId, int productId, BigDecimal quantity, BigDecimal unitPrice,
-                        BigDecimal discount, int statusId, Date dateAllocated, int purchaseOrderId, int inventoryId) {
+    public OrderDetails(int id, Orders orderId, Products productId, BigDecimal quantity, BigDecimal unitPrice,
+                        BigDecimal discount, OrderDetailsStatus statusId, Date dateAllocated, int purchaseOrderId, int inventoryId) {
         this.id = id;
+        this.orderId = orderId;
+        this.productId = productId;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+        this.discount = discount;
+        this.statusId = statusId;
+        this.dateAllocated = dateAllocated;
+        this.purchaseOrderId = purchaseOrderId;
+        this.inventoryId = inventoryId;
+    }
+
+    public OrderDetails(Orders orderId, Products productId, BigDecimal quantity, BigDecimal unitPrice, BigDecimal discount,
+                        OrderDetailsStatus statusId, Date dateAllocated, int purchaseOrderId, int inventoryId) {
         this.orderId = orderId;
         this.productId = productId;
         this.quantity = quantity;
@@ -68,19 +84,19 @@ public class OrderDetails {
         this.id = id;
     }
 
-    public int getOrderId() {
+    public Orders getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(Orders orderId) {
         this.orderId = orderId;
     }
 
-    public int getProductId() {
+    public Products getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Products productId) {
         this.productId = productId;
     }
 
@@ -108,11 +124,11 @@ public class OrderDetails {
         this.discount = discount;
     }
 
-    public int getStatusId() {
+    public OrderDetailsStatus getStatusId() {
         return statusId;
     }
 
-    public void setStatusId(int statusId) {
+    public void setStatusId(OrderDetailsStatus statusId) {
         this.statusId = statusId;
     }
 
